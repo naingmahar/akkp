@@ -1,0 +1,63 @@
+body{
+    padding-top: 30px;
+}
+.backgroundImage{
+        background-image: url("https://wonderfulengineering.com/wp-content/uploads/2016/01/eqypt-wallpaper-2.jpg");
+        height:100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+.center-box{
+    width: 100%;
+    margin: 0; 
+    padding: 0px; 
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    /* background-color: #5da626; */
+    /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+  
+    /* Firefox */
+    display:-moz-inline-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+  
+    /* Safari, Opera, and Chrome */
+    display:-webkit-inline-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+  
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+
+middle-box{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+input[type="text"]:not(.browser-default)#search{
+    height: auto;
+    width: auto;
+    padding: 8px  8px 8px 56px ;
+    border-bottom: 0;
+    margin: 0;
+}
+
+#site input{
+    height: auto;
+    width: auto;
+    padding: 8px  8px 8px 8px ;
+    border-bottom: 0;
+    margin: 0;
+}
