@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import InputBase from '@material-ui/core/InputBase';
 import { makeStyles, useTheme,fade } from '@material-ui/core/styles';
 
-
 import {useStyles} from './dashboard.style'
-
-
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,8 +23,9 @@ import DeviceHubIcon from "@material-ui/icons/DeviceHub";
 import SearchIcon from '@material-ui/icons/Search';
 import Login from '../login/login'
 import DevicePage from '../device/devices'
+import { Auth } from '../../lib/api/auth.model';
 
-export default function MiniDrawer() {
+export function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -40,7 +38,6 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
- 
 
   return (
     <div className={classes.root}>

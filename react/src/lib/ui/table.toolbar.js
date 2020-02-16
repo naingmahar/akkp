@@ -17,7 +17,6 @@ export const EnhancedTableToolbar = props => {
   const classes = useToolbarStyles();
   const { numSelected,formUi } = props;
   const [open, setOpen] = React.useState(false);
- console.log(formUi)
 
   return (
     <Toolbar
@@ -36,7 +35,7 @@ export const EnhancedTableToolbar = props => {
               Sites
             </Typography>
           </Grid>
-          <Grid item xs={1.5}> 
+          <Grid item xs={2}> 
             <FormControl fullWidth className={classes.margin} variant="outlined">
               <InputLabel htmlFor="outlined-adornment-amount">Search</InputLabel>
               <OutlinedInput
