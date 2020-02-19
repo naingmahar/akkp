@@ -40,6 +40,6 @@ export const Auth = {
     },
 
     clear(){
-        localStorage.setItem(authKey,{})
+        localStorage.setItem(authKey,JSON.stringify(AuthModel))
     }
 }

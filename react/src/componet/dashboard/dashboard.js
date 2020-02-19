@@ -23,13 +23,18 @@ import DeviceHubIcon from "@material-ui/icons/DeviceHub";
 import SearchIcon from '@material-ui/icons/Search';
 import Login from '../login/login'
 import DevicePage from '../device/devices'
+import { AccountCircle } from '@material-ui/icons';
+import { Menu, MenuItem, FormGroup, FormControlLabel, Switch } from '@material-ui/core';
 import { Auth } from '../../lib/api/auth.model';
 
-export function MiniDrawer() {
+export function MiniDrawer({onLogout}) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [currentPage, setcurrentPage] = React.useState("login");
+  const [auth, setAuth] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const isOpen = Boolean(anchorEl);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -39,9 +44,27 @@ export function MiniDrawer() {
     setOpen(false);
   };
 
+  const handleChange = event => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const _handleLogot = () =>{
+    setAnchorEl(null)
+    onLogout()
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
+      
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -50,6 +73,7 @@ export function MiniDrawer() {
       >
         <Toolbar>
           <IconButton
+            id="DrawerButton"
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -64,20 +88,37 @@ export function MiniDrawer() {
             EMF
           </Typography>
 
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          <div>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              {Auth.user.user.fullname}
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={isOpen}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={_handleLogot}>Logout</MenuItem>
+              </Menu>
+
             </div>
-            <InputBase
-              id="search"
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
 
         </Toolbar>
       </AppBar>
@@ -95,7 +136,7 @@ export function MiniDrawer() {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} id="DrawerClose">
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>

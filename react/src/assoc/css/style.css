@@ -61,3 +61,11 @@ input[type="text"]:not(.browser-default)#search{
     border-bottom: 0;
     margin: 0;
 }
+
+.footer-box{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    transform: translateY(-100%);
+}

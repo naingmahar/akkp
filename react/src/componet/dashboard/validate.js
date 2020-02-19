@@ -8,8 +8,13 @@ class ValidatePage extends Component {
         if(Auth.user.key.key == "") this.props.history.push("")
     }
 
+    _logOut = () =>{
+      Auth.clear()
+      this.props.history.push("")
+    }
+
   render() {
-    return <MiniDrawer />
+    return <MiniDrawer onLogout={this._logOut} />
   }
 }
 
